@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimek Shop</title>
+    <style>
+        /* ຕັ້ງຄ່າຟອນຕ໌ ແລະ ສີພື້ນຫຼັງແບບ Anime Style */
+        body {
+            font-family: 'Noto Sans Lao', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: rgb(235, 42, 138);
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* ຈັດໜ້າສິນຄ້າໃຫ້ເປັນ Grid 3 ຖັນ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #ff4757;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* ປຸ່ມຕິດຕໍ່ຊື້ເຄື່ອງ ຜ່ານ Messenger */
+        .btn-contact {
+            display: inline-block;
+            background-color: #0084ff; /* ສີຟ້າ Messenger */
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-contact:hover {
+            background-color: #0066cc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 3rem;
+        }
+    </style><style>
+    /* 1. ດຶງຟອນ Noto Sans Lao ມາຈາກ Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;700&display=swap');
+
+    /* 2. ຕັ້ງຄ່າໃຫ້ທັງເວັບໄຊໃຊ້ ຟອນນີ້ */
+    body {
+        font-family: 'Noto Sans Lao', sans-serif; /* ປ່ຽນເປັນຟອນສະໄໝໃໝ່ */
+        margin: 0;
+        padding: 0;
+        background-color: #f0f4f8;
+        color: #333;
+    }
+
+    header {
+        background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700; /* ໂຕເຂັ້ມງາມໆ */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header p {
+        margin: 0.5rem 0 0 0;
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 1.5rem;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-title {
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin: 0 0 0.5rem 0;
+        color: #2c3e50;
+        line-height: 1.5;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        color: #ff4757;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .btn-contact {
+        display: inline-block;
+        background-color: #0084ff;
+        color: white;
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 700;
+        transition: background 0.2s;
+    }
+
+    .btn-contact:hover {
+        background-color: #0066cc;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #2c3e50;
+        color: white;
+        margin-top: 3rem;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Shop ມິນິເມກກາຕູນຢີ່ປຸ່ນມືສອງ 🌟</h1>
+        <p>ສະສົມໂມເດວ, ກາຕູນຍອດຮິດ, ແລະ ຂອງແທ້ຈາກຍີ່ປຸ່ນ ລາຄາເປັນກັນເອງ</p>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+
+            <div class="product-card">
+                <img src="pic1.jpg" alt="Anime Figure 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">sogood (Figure 1)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 25,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="pic2.jfif" alt="Anime Figure 2" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ຟິກເກີໜ້າຮັກ ຍີ່ປຸ່ນແທ້ (Figure 2)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 35,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="pic3.jfif" alt="Anime Figure 3" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ຕຸກກະຕາອານິເມະ ມືສອງສະພາບດີ (Figure 3)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 25,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="pic4.jfif" alt="Anime Figure 4" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ຂອງສະສົມຫາຍາກ ຈາກຍີ່ປຸ່ນ ງານເເທ້ເເນ່ນອນຢ່າງສົມບູນເເບບ (Figure 4)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 45,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="pic5.jfif" alt="Anime Figure 5" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ໂມເດວຕັ້ງໂຕະ ຄອມມູນິຕີ້ (Figure 5)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 25,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="pic6.jfif" alt="Anime Figure 6" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">ເນນໂດຣອຍ ກາຕູນຍອດຮິດ (Figure 6)</h3>
+                    <p class="product-price">ເລີ່ມຕົ້ນ 55,000 ກີບ</p>
+                    <a href="https://m.me/1Gpqc8wjHZ" target="_blank" class="btn-contact">💬 ທັກແຊທສັ່ງຊື້</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ຮ້ານກາຕູນມືສອງ 25k+. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
